@@ -1,9 +1,11 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const shortUrl = require('./models/shortUrl')
+require('dotenv').config()
+const dbUrl = process.env.DB_URL
 const app = express()
 
-mongoose.connect('mongodb://mongo:MpAAhGcUUtPXDFnNqk63@containers-us-west-45.railway.app:7543', {
+mongoose.connect(dbUrl, {
     useNewUrlParser: true, useUnifiedTopology: true
 })
 
