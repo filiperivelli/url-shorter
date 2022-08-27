@@ -28,4 +28,10 @@ app.get('/:shortUrl', async (req,res) => {
     res.redirect(ShortUrl.full)
 })
 
+app.get('/delete/:shortUrl', async (req,res) => {
+    const ShortUrl = await shortUrl.findOne({ short: req.params.shortUrl })
+    ShortUrl.delete()  
+    res.redirect('/')     
+})
+
 app.listen(process.env.PORT || 5000);
